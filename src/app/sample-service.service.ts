@@ -13,7 +13,6 @@ export class SampleServiceService {
   connectionMessage: string | undefined;
 
   connectToSocket() {
-    debugger
     let url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self';
     const sockerconnection = new WebSocket(url)
 

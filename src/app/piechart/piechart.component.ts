@@ -40,7 +40,7 @@ export class PiechartComponent implements OnInit {
     this.drawPiechart();
     this.subscribeFromSocket.connectToSocket
   }
-  drawPiechart() { debugger
+  drawPiechart() {
     let ctx = document.getElementById("pieChart") as HTMLCanvasElement;
     this.chart = new Chart(ctx,this.config as any)
 

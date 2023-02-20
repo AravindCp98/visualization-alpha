@@ -143,7 +143,7 @@ export class MainDashBoardComponent implements OnInit {
 
 
 
-  closeLiveData() { debugger
+  closeLiveData() {
     this.sockerconnection.close();
     this.liveMessage = [];
     this.connectionMessage = 'disconnected from websocket' + new Date().toLocaleTimeString()
