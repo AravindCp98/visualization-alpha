@@ -30,9 +30,7 @@ export class MainDashBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.connectToSocket();
-    this.websocketEstablished.subscribeLiveData
-    console.log(this.websocketEstablished.subscribeLiveData, 'livedata')
-
+    this.websocketEstablished.subscribeLiveData();
     let ctx = document.getElementById("myChart") as HTMLCanvasElement;
    this.chart = new Chart(ctx, {
      type: 'bubble',
@@ -116,25 +114,30 @@ export class MainDashBoardComponent implements OnInit {
     
   }
   ngDocheck() {
-    this.websocketEstablished.subscribeLiveData
-    console.log(this.websocketEstablished.subscribeLiveData,'livedata')
+    this.websocketEstablished.subscribeLiveData;
+    
+    // this.connectToSocket();
+    // console.log(this.websocketEstablished.subscribeLiveData,'livedata')
   }
 
 
-  connectToSocket() {
-    let url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self';
+  connectToSocket() { debugger
+    let url = 'wss://demo.piesocket.com/v3/channel_1?api_key=oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm';
     this.sockerconnection = new WebSocket(url)
-    this.sockerconnection.onmessage = (event: any) => {
-      this.liveMessage.push(event.data + new Date().toLocaleTimeString())
-      // console.log(event)
-      this.scatteredValue.push({ x: Math.ceil(event.timeStamp), y: Math.floor((Math.random() * event.timeStamp)) })
-      this.secondScatreValue.push({ x: Math.floor((Math.random() * event.timeStamp) / 2), y: Math.ceil(event.timeStamp) / 2 })
-      // console.log(this.scatteredValue, this.secondScatreValue)
-      this.chart?.update();
-      this.radarChart?.update();
-      this.connectionMessage ="'succesffully connected to websocket'" +  new Date().toLocaleTimeString()
-      // this.sockerconnection.close();
-    }
+  
+      this.sockerconnection.onmessage = (event: any) => {
+        this.liveMessage.push(event.data + new Date().toLocaleTimeString())
+        // console.log(event)
+        this.scatteredValue.push({ x: Math.ceil(event.timeStamp), y: Math.floor((Math.random() * event.timeStamp)) })
+        this.secondScatreValue.push({ x: Math.floor((Math.random() * event.timeStamp) / 2), y: Math.ceil(event.timeStamp) / 2 })
+        // console.log(this.scatteredValue, this.secondScatreValue)
+        this.chart?.update();
+        this.radarChart?.update();
+        this.connectionMessage = "'succesffully connected to websocket'" + new Date().toLocaleTimeString()
+        // this.sockerconnection.close();
+      }
+    
+
   }
 
   // createOrder() {

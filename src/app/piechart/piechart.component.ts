@@ -10,6 +10,8 @@ Chart.register(...registerables);
 })
 export class PiechartComponent implements OnInit {
 
+  livedata: any[] = [];
+  
   data = {
     labels: [
       'Red',
@@ -38,14 +40,21 @@ export class PiechartComponent implements OnInit {
 
   ngOnInit(): void {
     this.drawPiechart();
-    this.subscribeFromSocket.connectToSocket
+    // this.subscribeFromSocket.connectToSocket();
+    this.getLiveDta();
   }
+  // ngDoCheck() { 
+  //   this.livedata?.push(this.subscribeFromSocket.connectToSocket())
+  //   console.log(this.livedata)
+  // }
   drawPiechart() {
     let ctx = document.getElementById("pieChart") as HTMLCanvasElement;
     this.chart = new Chart(ctx,this.config as any)
-
-    
-    
+  }
+  getLiveDta() {
+    this.subscribeFromSocket.connectToSocket();
+    // this.livedata?.push(this.subscribeFromSocket.connectToSocket()?.event)
+    console.log(this.livedata)
   }
 
 }

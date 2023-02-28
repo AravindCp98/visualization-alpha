@@ -15,18 +15,13 @@ export class SampleServiceService {
   connectToSocket() {
     let url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self';
     const sockerconnection = new WebSocket(url)
-
-    try {
-      sockerconnection.onmessage = (event: any) => {
-        if (event) {
-          event.successmessage = "succesfullyConnected to webscoket....."
-          return event
-        }
+    sockerconnection.onmessage = (event: any) => {
+      if (event) {
+        event.successmessage = "succesfullyConnected to webscoket....."
+        return event
       }
+
     }
-    catch (err: any) {
-      return err
-    };
 
   }
 

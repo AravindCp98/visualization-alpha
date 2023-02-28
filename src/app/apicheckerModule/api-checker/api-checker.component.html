@@ -1,0 +1,38 @@
+<div class="apiTester">
+    <div class="header">
+        <div class="heading">
+                    <img src="assets/rig-logo.png">
+                    <p>Api checker Beta</p>
+        </div>
+
+        <div class="searchInput">
+                <input type="text" class="searchContainer" [(ngModel)]="getApi">
+                        <button class="checkApi" (click)="initializeGetMethod()"> Check api</button>
+                        <select>
+                            <option value="get">Get</option>
+                            <option value="put">Put</option>
+                            <option value="post">Post</option>
+                        </select>
+        </div>
+ 
+
+    </div>
+    <div class="main-container">
+        <div class="sidebar">
+            <p>fecthed Api list</p>
+            <ul *ngFor="let api of apiLsit">
+                <li title="{{api}}" (click)="initializeGetMethod(api)" class="apilist">{{api}}</li>
+            </ul>
+        </div>
+        <div class="tablecontent">
+            <div class="apiResult" *ngIf="fectedData">
+                <div *ngFor="let data of fectedData | keyvalue">
+                    <pre>
+                     {{data | json}}
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
