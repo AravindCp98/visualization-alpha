@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'dashBoardAplha';
-parentValue: string ='data from parent is here';
+  constructor(private router: Router) {
+    this.currentRoute();
+  }
+  routerLink: string = ""
+
+  currentRoute() {
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        this.routerLink = event.url;
+      }
+    });
+  }
 }

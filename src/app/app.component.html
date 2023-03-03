@@ -1,4 +1,20 @@
-<!-- <app-main-dash-board [valuefromPparent] ='parentValue'> </app-main-dash-board> -->
-<!-- <app-piechart></app-piechart> -->
-<app-api-checker></app-api-checker>
-<!-- <h2>parent component</h2> -->
+<div class="mainPage" *ngIf="routerLink =='/'">
+    <span class="apphead">Visualization Alpha</span>
+    <div class="cardContainer">
+        <div class="chart cardSize">
+            <span class="moduleText">
+                <a [routerLink]="[ '/visualization-alpha' ]"> Data Visualization </a>
+
+            </span>
+
+            <span class="icon"><img src="https://cdn-icons-png.flaticon.com/512/9504/9504101.png "></span>
+        </div>
+        <div class="apiChecker cardSize">
+            <span class="moduleText">
+                <a [routerLink]="[ '/apiChecker' ]">Api Checker </a>
+            </span>
+            <span class="icon"><img src="https://cdn-icons-png.flaticon.com/512/8099/8099422.png "></span>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
