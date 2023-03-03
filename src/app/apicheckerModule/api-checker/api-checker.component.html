@@ -1,36 +1,72 @@
 <div class="apiTester">
     <div class="header">
         <div class="heading">
-                    <img src="assets/rig-logo.png">
-                    <p>Api checker Beta</p>
+            <div>
+                <svg _ngcontent-ocy-c49="" viewBox="0 0 350 211.16864143337932" class="logo">
+                    <defs _ngcontent-ocy-c49="" id="SvgjsDefs1378"></defs>
+                    <g _ngcontent-ocy-c49="" id="SvgjsG1379" featurekey="aMgJeN-0"
+                        transform="matrix(1.6063889256425958,0,0,1.6063889256425958,108.16063644140928,0)"
+                        fill="#000000">
+                        <path _ngcontent-ocy-c49="" xmlns="http://www.w3.org/2000/svg"
+                            d="M35.8,62.5L35.8,62.5L35.8,62.5l-9.7-9.7V39.6c4.2-0.7,7.3-4.4,7.3-8.7c0-4.9-4-8.9-8.9-8.9c-4.9,0-8.9,4-8.9,8.9    c0,4.4,3.2,8,7.3,8.7v14.5h0l9.7,9.7v38.5h3.1V62.5L35.8,62.5L35.8,62.5z M18.7,30.9c0-3.2,2.6-5.8,5.8-5.8c3.2,0,5.8,2.6,5.8,5.8    c0,3.2-2.6,5.8-5.8,5.8C21.3,36.7,18.7,34.1,18.7,30.9z">
+                        </path>
+                        <path _ngcontent-ocy-c49="" xmlns="http://www.w3.org/2000/svg"
+                            d="M20.1,85.5L20.1,85.5L20.1,85.5l-9.7-9.7V62.6c4.2-0.7,7.3-4.4,7.3-8.7c0-4.9-4-8.9-8.9-8.9c-4.9,0-8.9,4-8.9,8.9    c0,4.4,3.2,8,7.3,8.7v14.5h0l9.7,9.7v15.5h3.1V85.5L20.1,85.5L20.1,85.5z M3.1,53.8c0-3.2,2.6-5.8,5.8-5.8c3.2,0,5.8,2.6,5.8,5.8    c0,3.2-2.6,5.8-5.8,5.8C5.7,59.6,3.1,57,3.1,53.8z">
+                        </path>
+                        <path _ngcontent-ocy-c49="" xmlns="http://www.w3.org/2000/svg"
+                            d="M69,79.7c0-4.9-4-8.9-8.9-8.9c-4.9,0-8.9,4-8.9,8.9c0,4.4,3.2,8,7.3,8.7v13.9h3.1V88.4C65.8,87.7,69,84.1,69,79.7z     M60.1,85.5c-3.2,0-5.8-2.6-5.8-5.8c0-3.2,2.6-5.8,5.8-5.8c3.2,0,5.8,2.6,5.8,5.8C65.9,82.9,63.3,85.5,60.1,85.5z">
+                        </path>
+                        <path _ngcontent-ocy-c49="" xmlns="http://www.w3.org/2000/svg"
+                            d="M56,46.6c0-5-4.1-9-9.2-8.9c-4.7,0.1-8.6,4.1-8.6,8.9c0,4.4,3.2,8,7.3,8.7v47h3.1v-47C52.8,54.6,56,50.9,56,46.6z     M47.1,52.4c-3.2,0-5.8-2.6-5.8-5.8c0-3.2,2.6-5.8,5.8-5.8c3.2,0,5.8,2.6,5.8,5.8C52.9,49.8,50.3,52.4,47.1,52.4z">
+                        </path>
+                        <path _ngcontent-ocy-c49="" xmlns="http://www.w3.org/2000/svg"
+                            d="M83.7,8.9c0-4.9-4-8.9-8.9-8.9C69.9,0,66,4,66,8.9c0,4.4,3.2,8,7.3,8.7v20.5l-49,49h0v15.2h3.1V88.5l49-49l0,0h0.1V17.6    C80.5,16.9,83.7,13.3,83.7,8.9z M74.8,14.7c-3.2,0-5.8-2.6-5.8-5.8c0-3.2,2.6-5.8,5.8-5.8c3.2,0,5.8,2.6,5.8,5.8    C80.6,12.1,78,14.7,74.8,14.7z">
+                        </path>
+                    </g>
+                    <g _ngcontent-ocy-c49="" id="SvgjsG1380" featurekey="8L6ael-0"
+                        transform="matrix(1.810438181353219,0,0,1.810438181353219,-0.20391366252809864,174.95987866959914)"
+                        fill="#000000"></g>
+                </svg>
+
+            </div>
+
+            <p class="heading-para">Api checker Beta</p>
         </div>
 
         <div class="searchInput">
-                <input type="text" class="searchContainer" [(ngModel)]="getApi">
-                        <button class="checkApi" (click)="initializeGetMethod()"> Check api</button>
-                        <select>
-                            <option value="get">Get</option>
-                            <option value="put">Put</option>
-                            <option value="post">Post</option>
-                        </select>
+            <div class="custom-select" style="width:200px;">
+
+                <select ngDefaultControl [(ngModel)]="selectedHttpMethod">
+                    <option *ngFor="let method of httpMethod">{{method}}</option>
+                </select>
+
+            </div>
+
+            <input type="text" class="searchContainer" [(ngModel)]="getApi" (keyup.enter)="enterKeypress($event)">
+            <button class="checkApi" (click)="fetchAPiData()"> Check api</button>
         </div>
- 
+
 
     </div>
     <div class="main-container">
         <div class="sidebar">
-            <p>fecthed Api list</p>
+            <span class="btnConatiner">
+                <button class="clearbtn" (click)="clearApiList()">clear List</button>
+                <p class="connectedList">⚙️Connected API</p>
+            </span>
+
             <ul *ngFor="let api of apiLsit">
-                <li title="{{api}}" (click)="initializeGetMethod(api)" class="apilist">{{api}}</li>
+
+                <li title="{{api}}" (click)="initializeHttpMethod(api)" class="apilist">{{api}}</li>
+
             </ul>
         </div>
         <div class="tablecontent">
-            <div class="apiResult" *ngIf="fectedData">
-                <div *ngFor="let data of fectedData | keyvalue">
-                    <pre>
+            <span class="loader" *ngIf="!fectedData"></span>
+            <div *ngFor="let data of fectedData">
+                <pre>
                      {{data | json}}
                     </pre>
-                </div>
             </div>
         </div>
     </div>

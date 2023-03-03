@@ -10,6 +10,10 @@
     border-right: 3px solid #270d0d;
 }
 
+.logo {
+    width: 58px;
+}
+
 .header {
     width: 100%;
     height: 40px;
@@ -18,10 +22,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: rgb(24, 184, 193);
+    background: linear-gradient(90deg, rgba(24, 184, 193, 0.5551470588235294) 43%, rgba(2, 0, 36, 1) 100%, rgba(0, 212, 255, 1) 100%);
 }
 
 .heading {
     display: flex;
+    align-items: center;
 }
 
 .tablecontent {
@@ -48,7 +55,7 @@
 
 .checkApi {
     border: none;
-    width: 150px;
+    width: 180px;
     padding: 10px;
     font-size: 17px;
     background: #409e40;
@@ -67,16 +74,23 @@
 }
 
 .apilist {
+    padding: 10px;
+    background: #c0c5ca;
     text-overflow: ellipsis;
     font-size: 1.2em;
-    margin-bottom: 0.5em;
     white-space: nowrap;
     overflow: hidden !important;
-    border-bottom: 1px solid #918787;
+    border-bottom: 2px solid #7b7b7b;
+    cursor: pointer;
+
+}
+
+.apilist:hover {
+    background-color: #818386;
 }
 
 ul {
-    padding-left: 10px;
+    padding: 0px 10px;
     margin: 0;
 }
 
@@ -84,10 +98,20 @@ img {
     width: 40px;
 }
 
-p {
+.connectedList {
+    padding-left: 10px;
+    font-size: 20px;
+    color: #186b29;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+.heading-para {
     color: #0f68ce;
     font-weight: 700;
     font-size: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .searchInput {
@@ -99,4 +123,72 @@ p {
     align-items: center;
     gap: 30px;
     padding-right: 30px;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    display: flex;
+    top: 50%;
+    left: 50%;
+}
+
+.loader::after,
+.loader::before {
+    content: '';
+    box-sizing: border-box;
+    width: 101px;
+    height: 101px;
+    border-radius: 50%;
+    border: 11px solid #ea0735;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: animloader 2s cubic-bezier(0, 0.54, 1, 1) infinite;
+}
+
+.btnConatiner {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 90px 1fr;
+}
+
+.clearbtn {
+    width: 75px;
+    height: 30px;
+    background: #de4242;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    margin-left: 10px;
+}
+
+.loader::after {
+    animation-delay: 1s;
+}
+
+select {
+    width: 126px;
+    height: 30px;
+    border: none;
+    outline: none;
+}
+
+option {
+    width: 126px;
+    height: 50px;
+    font-size: 15px;
+}
+
+@keyframes animloader {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
 }

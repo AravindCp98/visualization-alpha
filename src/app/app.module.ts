@@ -8,7 +8,9 @@ import { RouterModule } from '@angular/router';
 import { ApiCheckerComponent } from './apicheckerModule/api-checker/api-checker.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+// import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -16,17 +18,19 @@ import { FormsModule } from '@angular/forms';
     MainDashBoardComponent,
     PiechartComponent,
     ApiCheckerComponent,
-    
   ],
   imports: [
     FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatDividerModule,
     RouterModule.forRoot([
       { path: 'apitester', component: ApiCheckerComponent }
     ]),
-    
+
 
   ],
   providers: [],

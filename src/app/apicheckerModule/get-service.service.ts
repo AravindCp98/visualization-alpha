@@ -8,7 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class GetServiceService {
 
   constructor(private httpClient: HttpClient) { }
-  fetchApi(url:string) {
-    return this.httpClient.get(url);
+
+  fetchApi(url: string) {
+    return this.httpClient.get(url).toPromise();
   }
 }
