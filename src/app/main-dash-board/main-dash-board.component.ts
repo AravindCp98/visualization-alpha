@@ -71,9 +71,7 @@ export class MainDashBoardComponent implements OnInit {
           label: 'My First Dataset',
           data: this.scatteredValue,
           fill: true,
-          // backgroundColor: 'red',
           borderColor: 'blue',
-          // pointBackgroundColor: 'wheat',
           pointBorderColor: 'red',
           pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor: 'rgb(255, 99, 132)',
@@ -83,9 +81,7 @@ export class MainDashBoardComponent implements OnInit {
           label: 'My First Dataset',
           data: this.secondScatreValue,
           fill: true,
-          // backgroundColor: 'yellow',
           borderColor: 'green',
-          // pointBackgroundColor: 'grey',
           pointBorderColor: 'red',
           pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor: 'rgb(121, 99, 132)',
@@ -96,12 +92,9 @@ export class MainDashBoardComponent implements OnInit {
       options: {
         scales: {
           yAxis: {
-            // scaleLabel: {
             type:'linear',
             display: true,
             position: 'center'
-              // labelString: 'Count'
-            // }
             
           },
           xAxis: {
@@ -115,36 +108,22 @@ export class MainDashBoardComponent implements OnInit {
   }
   ngDocheck() {
     this.websocketEstablished.subscribeLiveData;
-    
-    // this.connectToSocket();
-    // console.log(this.websocketEstablished.subscribeLiveData,'livedata')
   }
 
 
-  connectToSocket() { debugger
+  connectToSocket() {
     let url = 'wss://demo.piesocket.com/v3/channel_1?api_key=oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm';
     this.sockerconnection = new WebSocket(url)
   
       this.sockerconnection.onmessage = (event: any) => {
         this.liveMessage.push(event.data + new Date().toLocaleTimeString())
-        // console.log(event)
         this.scatteredValue.push({ x: Math.ceil(event.timeStamp), y: Math.floor((Math.random() * event.timeStamp)) })
         this.secondScatreValue.push({ x: Math.floor((Math.random() * event.timeStamp) / 2), y: Math.ceil(event.timeStamp) / 2 })
-        // console.log(this.scatteredValue, this.secondScatreValue)
         this.chart?.update();
         this.radarChart?.update();
         this.connectionMessage = "'succesffully connected to websocket'" + new Date().toLocaleTimeString()
-        // this.sockerconnection.close();
       }
-    
-
   }
-
-  // createOrder() {
-    
-  // }
-
-
 
   closeLiveData() {
     this.sockerconnection.close();
