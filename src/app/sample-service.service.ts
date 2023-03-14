@@ -12,7 +12,7 @@ export class SampleServiceService {
   radarChart: any;
   connectionMessage: string | undefined;
 
-  connectToSocket() {
+   static connectToSocket() {
     let url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self';
     const sockerconnection = new WebSocket(url)
     sockerconnection.onmessage = (event: any) => {
