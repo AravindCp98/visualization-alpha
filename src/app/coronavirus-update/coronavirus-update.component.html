@@ -1,0 +1,18 @@
+<!-- <p>coronavirus Graph</p> -->
+<!-- <button (click)="fetchApi()">fetch</button> -->
+<!-- <ng-template *ngFor="let data of fetchedData |keyvalue">
+<ng-template *ngFor="let dist of data|keyvalue">
+    <pre>{{dist|json}}</pre>
+</ng-template> -->
+
+<!-- </ng-template > -->
+<div class="canvasContainer">
+    <ng-container *ngFor="let id of canvasId">
+        <div class="p-relaitve" :id="{{'div'+id}}"> 
+            <button class="expandWidget" (click)="expandWidget(id,'close')">&#x2715;</button>
+            <button class="closewidget" (click)="expandWidget(id,'expand')"> 📈</button>
+            <canvas [id]="id"> </canvas>
+    </div>
+ 
+    </ng-container>
+</div>

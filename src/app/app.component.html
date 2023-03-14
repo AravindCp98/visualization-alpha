@@ -1,6 +1,6 @@
 <div class="mainPage" *ngIf="routerLink =='/'">
     <span class="apphead">Visualization Alpha</span>
-    <div class="cardContainer">
+    <div class="cardContainer mediaQ1">
         <div class="chart cardSize">
             <span class="moduleText">
                 <a [routerLink]="[ '/visualization-alpha' ]"> Data Visualization </a>
@@ -15,6 +15,17 @@
             </span>
             <span class="icon"><img src="https://cdn-icons-png.flaticon.com/512/8099/8099422.png "></span>
         </div>
+            <div class="cardContainer mediaQ1">
+                <div class="apiChecker cardSize">
+                    <span class="moduleText">
+                        <a [routerLink]="[ '/CoronavirusUpdateComponent' ]">Canvas Graph </a>
+                    </span>
+                    <span class="icon"><img src="https://img.icons8.com/plasticine/100/coronavirus.png"></span>
+                </div>
+            </div>
     </div>
+
 </div>
+<!-- https://github.com/covid19india/api -->
+<!-- https://data.covid19india.org/v4/min/timeseries.min.json -->
 <router-outlet></router-outlet>

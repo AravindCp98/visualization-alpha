@@ -9,6 +9,7 @@ import { ApiCheckerComponent } from './apicheckerModule/api-checker/api-checker.
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoronavirusUpdateComponent } from './coronavirus-update/coronavirus-update.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainDashBoardComponent,
     PiechartComponent,
     ApiCheckerComponent,
+    CoronavirusUpdateComponent,
   ],
   imports: [
     FormsModule,

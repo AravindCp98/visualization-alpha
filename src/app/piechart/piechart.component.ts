@@ -52,7 +52,7 @@ export class PiechartComponent implements OnInit {
     this.chart = new Chart(ctx,this.config as any)
   }
   getLiveDta() {
-    this.subscribeFromSocket.connectToSocket();
+    SampleServiceService.connectToSocket();
     // this.livedata?.push(this.subscribeFromSocket.connectToSocket()?.event)
     console.log(this.livedata)
   }

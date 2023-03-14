@@ -39,53 +39,17 @@ export class ApiCheckerComponent implements OnInit {
 
     }
   }
-  async initializeHttpMethod(getApi?: string) {
-    //alteranate methodd
-    // const response = await fetch(getApi, {
-    //   headers: {
-    //     'Accept': 'application/json',
-    //   },
-    // });
-    // const text = await response.text()
-    // this.fectedData.push(text)
-
+  initializeHttpMethod(getApi?: string) {
     if (getApi?.length) {
-      if (!this.apiLsit.includes(getApi)) {
-        this.apiLsit.push(getApi);
-      }
-      localStorage.setItem("apilist", JSON.stringify(getApi));
-      this.fectedData = [];
-      this.GetService.fetchApi(getApi)
-        .then((data) => {
-          if (data) {
-            this.fectedData = [];
-            this.fectedData.push(data);
-            this.isfectch = false;
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          this.isfectch = false;
-          this.fectedData.push(err.status + err.statusText);
-        });
-    } else {
-      this.apiLsit.push(this.getApi);
-      localStorage.setItem("apilist", JSON.stringify(this.apiLsit));
-      this.fectedData = [];
-      this.GetService.fetchApi(this.getApi)
-        .then((data) => {
-          if (data) {
-            this.fectedData.push(data);
-            this.isfectch = false;
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          this.isfectch = false;
-          this.fectedData.push(err.status + "   " + err.statusText);
-        });
+      this.fectedData = this.GetService.fetchApi(getApi)
     }
+    else {
+      this.fectedData = this.GetService.fetchApi(this.getApi)
+    }
+
+
   }
+
   //post method functionality
   async initializePost() {
     // const url = this.getApi;

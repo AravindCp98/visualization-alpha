@@ -63,7 +63,7 @@
         </div>
         <div class="tablecontent">
             <span class="loader" *ngIf="!fectedData"></span>
-            <div *ngFor="let data of fectedData">
+            <div *ngFor="let data of fectedData | keyvalue">
                 <pre>
                      {{data | json}}
                     </pre>
