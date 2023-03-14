@@ -217,13 +217,20 @@ export class CoronavirusUpdateComponent implements OnInit {
       div.remove()
     }
     else {
-      widget.width = window.innerWidth
-      widget.height = window.innerHeight
-      div.style.height = window.innerHeight + 'px'
-      div.style.width= window.innerWidth+'px'
-      
+      // widget.width = window.innerWidth;
+      // widget.height = window.innerHeight;
+      // div.style.height = window.innerHeight + 'px';
+      // div.style.width = window.innerWidth + 'px';
+      this.canvasId.forEach((eleID: string) => {
+        if (eleID !== id) {
+          const uncheckedCanvasEle = document.getElementById(eleID) as HTMLCanvasElement
+          const uncheckedDiv = document.getElementById('div'+eleID) as HTMLDivElement
+          uncheckedCanvasEle.remove()
+          uncheckedDiv.remove()
+          return
+        }
+      })
     }
-
   }
 
 }
