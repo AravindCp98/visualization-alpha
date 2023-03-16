@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GetServiceService } from '../apicheckerModule/get-service.service';
 import * as dat from 'dat.gui';
+import { RandomNumberGenerator } from '../serviceModule'
 
 
 @Component({
@@ -16,16 +16,17 @@ export class CoronavirusUpdateComponent implements OnInit {
   confirmedL: any = []
   vaccinated1: number[] = []
   vaccinated2: number[] = []
-  canWidth: any = window.innerWidth+'px';
-  canHeight:any= window.innerHeight+'px'
+  canWidth: any = window.innerWidth + 'px';
+  canHeight: any = window.innerHeight + 'px';
+  sockerconnection = {} as WebSocket;
   canvasId: Array<string> = ["tutorial", "linechart", "sinWawe", "rotateDrill"]
-
+  scatteredValue: any;
 
 
   constructor() { }
 
   async ngOnInit() {
-
+  
     await this.fetchApi()
     if (this.fetchedData && this.fetchedData[0]) {
       this.fetchedData = Object.values(this.fetchedData[0])
@@ -40,12 +41,10 @@ export class CoronavirusUpdateComponent implements OnInit {
     this.SinWawe()
     this.lineChart()
 
-    setInterval(this.rotateDrillBit,200)
+    setInterval(this.rotateDrillBit, 200)
 
   }
-  ngDoCheck() {
-    // this.SinWawe();
-  }
+
   async fetchApi() {
     console.log('Performing GET operation');
     await fetch(this.serviceApi)
@@ -61,11 +60,12 @@ export class CoronavirusUpdateComponent implements OnInit {
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     this.drawCavasGrid("tutorial", "#05ecf0")
     // this.drawCavasGrid('sinWawe', '#5e9167')
-    for (let i = 0; i <= this.vaccinated1.length; i++) {
+    let randomNum = RandomNumberGenerator.generateRndmNum(1, 88000)
+    for (let i = 0; i <= randomNum.length; i++) {
       // ctx.fillStyle = "#132e59"  
       ctx.beginPath();
-      ctx.ellipse(Object.values(this.vaccinated1)[i] / 90000, i, Math.PI / 2, Math.PI / 2, Math.PI / 3, 0, 2 * Math.PI, false)
-      ctx.arc(Object.values(this.vaccinated1)[i] / 90000, i, 5, 5, 5 * Math.PI);
+      ctx.ellipse(randomNum[i] / 100, i, Math.PI / 2, Math.PI / 2, Math.PI / 3, 0, 2 * Math.PI,)
+      ctx.arc(randomNum[i] / 100, i, 3, 1, 5 * Math.PI)
       ctx.shadowColor = "green";
       ctx.shadowOffsetX = 1;
       ctx.lineWidth = 1
@@ -141,7 +141,6 @@ export class CoronavirusUpdateComponent implements OnInit {
     gui.add(wawe, 'length', -0.01, 0.01)
     gui.add(wawe, 'amplitude', -300, 300)
     gui.add(wawe, 'frequency', -0.01, 1)
-    // gui.add(strokeColor,'h',255)
 
 
 
@@ -164,7 +163,6 @@ export class CoronavirusUpdateComponent implements OnInit {
       ctx.stroke();
       ctx.strokeStyle = 'hsl(358, 87%, 30%)'
       increment = wawe.frequency + wawe.frequency
-      // console.log('animatre', increment)
     }
     animate();
 
@@ -172,7 +170,7 @@ export class CoronavirusUpdateComponent implements OnInit {
 
   rotateDrillBit() {
     const canvas = document.getElementById("rotateDrill") as HTMLCanvasElement;
-   
+
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     const canvasHeight = canvas.height
     const canvasWidth = canvas.width
@@ -184,8 +182,8 @@ export class CoronavirusUpdateComponent implements OnInit {
         ctx.beginPath();
         let increaseX = canvasWidth * Math.random()
         let IncreaseY = canvasHeight * Math.random()
-        ctx.clearRect(increaseX, IncreaseY, canvasHeight, canvasWidth) 
-        for (let i = 0; i <= 0; i++){   
+        ctx.clearRect(increaseX, IncreaseY, canvasHeight, canvasWidth)
+        for (let i = 0; i <= 0; i++) {
           // ctx.clearRect(canvasWidth, canvasHeight, canvasWidth, canvasHeight)
           // ctx.drawImage(img, increaseX, IncreaseY, 80, 80);
           ctx.moveTo(1, IncreaseY)
@@ -198,34 +196,29 @@ export class CoronavirusUpdateComponent implements OnInit {
       };
     }
     img.src = 'assets/images/drillbit.jpg';
- 
-   
+
+
 
     ctx.stroke()
     animateDrillBit();
   }
-  expandWidget(id: string,method:string) {
-    console.log(id, 'id')
+  expandWidget(id: string, method: string) {
     const widget = document.getElementById(id) as HTMLCanvasElement
-    const div = document.getElementById('div'+id) as HTMLDivElement
-    // widget.height = window.innerHeight;
-    // widget.width= window.innerWidth
+    const div = document.getElementById('div' + id) as HTMLDivElement
+    const uncheckedCanvasEle = document.getElementsByClassName('canva-container') as any
     if (method == 'close') {
       widget.style.visibility = 'hidden'
       widget.remove()
       div.style.visibility = 'hidden'
       div.remove()
+      uncheckedCanvasEle[0].classList.add('canvasContainer')
     }
+
     else {
-      // widget.width = window.innerWidth;
-      // widget.height = window.innerHeight;
-      // div.style.height = window.innerHeight + 'px';
-      // div.style.width = window.innerWidth + 'px';
       this.canvasId.forEach((eleID: string) => {
         if (eleID !== id) {
-          const uncheckedCanvasEle = document.getElementById(eleID) as HTMLCanvasElement
-          const uncheckedDiv = document.getElementById('div'+eleID) as HTMLDivElement
-          uncheckedCanvasEle.remove()
+          const uncheckedDiv = document.getElementById('div' + eleID) as HTMLDivElement
+          uncheckedCanvasEle[0].classList.remove('canvasContainer')
           uncheckedDiv.remove()
           return
         }
