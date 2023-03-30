@@ -192,7 +192,7 @@ export class CoronavirusUpdateComponent implements OnInit {
         ctx.lineWidth = 4;
         ctx.strokeStyle = '#4ead05'
         ctx.stroke();
-        console.log('animating bit', increaseX, IncreaseY)
+        // console.log('animating bit', increaseX, IncreaseY)
       };
     }
     img.src = 'assets/images/drillbit.jpg';
@@ -203,15 +203,22 @@ export class CoronavirusUpdateComponent implements OnInit {
     animateDrillBit();
   }
   expandWidget(id: string, method: string) {
-    const widget = document.getElementById(id) as HTMLCanvasElement
+    // const widget = document.getElementById(id) as HTMLCanvasElement
     const div = document.getElementById('div' + id) as HTMLDivElement
     const uncheckedCanvasEle = document.getElementsByClassName('canva-container') as any
+    // let index = this.canvasId.findIndex(Canvasid => Canvasid == id);
     if (method == 'close') {
-      widget.style.visibility = 'hidden'
-      widget.remove()
-      div.style.visibility = 'hidden'
-      div.remove()
-      uncheckedCanvasEle[0].classList.add('canvasContainer')
+      // div.remove()
+
+      if (this.canvasId.length == 1) {
+        this.canvasId = ["tutorial", "linechart", "sinWawe", "rotateDrill"]
+        this.canvasId = this.canvasId.filter((element: string) => element !== id)
+      }
+      else {
+        this.canvasId = this.canvasId.filter((element: string) => element !== id);
+      }
+   
+      return
     }
 
     else {
@@ -219,10 +226,14 @@ export class CoronavirusUpdateComponent implements OnInit {
         if (eleID !== id) {
           const uncheckedDiv = document.getElementById('div' + eleID) as HTMLDivElement
           uncheckedCanvasEle[0].classList.remove('canvasContainer')
+          this.canvasId = this.canvasId.filter((element: string) => element == id) 
           uncheckedDiv.remove()
           return
         }
       })
+      this.canvasId = this.canvasId.filter((element: string) => element == id);
+      // this.canvasId.slice( index,0)
+      ; 
     }
   }
 

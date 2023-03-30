@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoronavirusUpdateComponent } from './coronavirus-update/coronavirus-update.component';
+import { DrillModuleComponent } from './drill-module/drill-module.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { CoronavirusUpdateComponent } from './coronavirus-update/coronavirus-upd
     PiechartComponent,
     ApiCheckerComponent,
     CoronavirusUpdateComponent,
+    DrillModuleComponent,
   ],
   imports: [
     FormsModule,
