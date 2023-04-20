@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoronavirusUpdateComponent } from './coronavirus-update/coronavirus-update.component';
 import { DrillModuleComponent } from './drill-module/drill-module.component';
+import { SubdrillComponent } from './drill-module/subdrill/subdrill/subdrill.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { DrillModuleComponent } from './drill-module/drill-module.component';
     ApiCheckerComponent,
     CoronavirusUpdateComponent,
     DrillModuleComponent,
+    SubdrillComponent,
   ],
   imports: [
     FormsModule,

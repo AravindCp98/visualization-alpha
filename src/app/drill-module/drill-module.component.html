@@ -1,10 +1,7 @@
 <div class="imageContainer">
-  <!-- <ng-container *ngFor="let images of imagePath let i = index">
-<img src={{images}} (dragleave)="dragImage(images,i)">
-  </ng-container> -->
-  <button (click)="createHtmlElement('div',200,300,'red')">createDiv</button>
-  <video  controls preload>
-    <source src="http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_stereo_abl.mp4">
-  </video>
+    <button class="clrBtn" (click)="clearDrawing()">clear</button>
+    <button class="clrBtn top" (click)="restart()">Restart</button>
+<app-subdrill imagePathVal="{{imagePath}}"> </app-subdrill>
+    <div id="main"></div>
 
 </div>

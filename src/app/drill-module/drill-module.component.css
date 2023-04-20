@@ -14,3 +14,24 @@ video{
     width: 40%;
     height: 300px;
 }
+ #main{ 
+  height: 700px;
+  width: 100%
+  
+ }
+ .clrBtn{
+    width: 63px;
+    background: #1c1818;
+    height: 29px;
+    border: none;
+    border-radius: 4px;
+    top: 7px;
+    left: 6px;
+    position: absolute;
+    z-index: 100;
+    color: white;
+
+ }
+ .top{
+    top:40px
+ }

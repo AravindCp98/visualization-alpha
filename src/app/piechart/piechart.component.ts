@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
 import { SampleServiceService } from '../sample-service.service'
-Chart.register(...registerables);
 
 @Component({
   selector: 'app-piechart',
@@ -34,26 +32,19 @@ export class PiechartComponent implements OnInit {
     data: this.data,
   };
 
-  chart: Chart | undefined
+  // chart: Chart | undefined
   constructor(private subscribeFromSocket: SampleServiceService) { }
 
 
   ngOnInit(): void {
-    this.drawPiechart();
-    // this.subscribeFromSocket.connectToSocket();
     this.getLiveDta();
   }
-  // ngDoCheck() { 
-  //   this.livedata?.push(this.subscribeFromSocket.connectToSocket())
-  //   console.log(this.livedata)
-  // }
+
   drawPiechart() {
     let ctx = document.getElementById("pieChart") as HTMLCanvasElement;
-    this.chart = new Chart(ctx,this.config as any)
+    // this.chart = new Chart(ctx,this.config as any)
   }
   getLiveDta() {
-    SampleServiceService.connectToSocket();
-    // this.livedata?.push(this.subscribeFromSocket.connectToSocket()?.event)
     console.log(this.livedata)
   }
 

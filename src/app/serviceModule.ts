@@ -9,6 +9,13 @@ export class RandomNumberGenerator {
         return numberArr;
 
     }
+    public static GenerateInifityNumber(min: number, max: number) {
+        let numberArr: number[] = []
+        for (let i = 0; i <= 99999; i++) {
+            numberArr.push((Math.floor(Math.random() * (max - min + 1)) + min))
+        }
+        return numberArr;
+    }
 }
 
 
