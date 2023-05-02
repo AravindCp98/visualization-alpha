@@ -25,9 +25,6 @@ export class ApiCheckerComponent implements OnInit {
     });
 
   }
-  ngDoCheck() {
-    // this.clearApiList()
-  }
   //get method functionality
   fetchAPiData() {
     switch (this.selectedHttpMethod) {
@@ -46,26 +43,22 @@ export class ApiCheckerComponent implements OnInit {
     else {
       this.fectedData = this.GetService.fetchApi(this.getApi)
     }
-
-
   }
 
   //post method functionality
   async initializePost() {
-    // const url = this.getApi;
-    // const response = await fetch(url, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //     'Content-Length': '0',
-    //   },
-    // });
-
-    // const text = await response.text();
-    console.warn('method not implemented')
+    const url = this.getApi;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Content-Length': '0',
+      },
+    });
+    const ResultText = await response.text();
+    return ResultText;
   }
-
 
   enterKeypress(event: any) {
     if (event.key.toLocaleLowerCase() == "enter" && this.getApi.length) {
@@ -77,6 +70,5 @@ export class ApiCheckerComponent implements OnInit {
     this.apiLsit = [];
     this.fectedData = [];
     localStorage.clear();
-    console.log("n");
   }
 }
