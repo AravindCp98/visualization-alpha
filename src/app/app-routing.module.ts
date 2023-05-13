@@ -10,12 +10,12 @@ const routes: Routes = [
   { path: 'apiChecker', component: ApiCheckerComponent },
   { path: 'visualization-alpha', component: MainDashBoardComponent },
   { path: 'CoronavirusUpdateComponent', component: CoronavirusUpdateComponent },
-  // { path: 'Drill', component: DrillModuleComponent }
+  { path: 'Drill', component: DrillModuleComponent }
   //implementing lazy loading
   //if below lazymodule show error then comment it (line 15-17 and uncomment line 13)
-  { path:'Drill',loadChildren:()=> 
-  import('.././app/drill-module').then(module=>module.DrillModuleComponent)
-}
+//   { path:'Drill',loadChildren:()=> 
+//   import('.././app/drill-module').then(module=>module.DrillModuleComponent)
+// }
   
 ];
 
