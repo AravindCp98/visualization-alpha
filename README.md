@@ -1,5 +1,11 @@
 # DashBoardAplha
 
+this project was created for education pourpose and future development as a product vision is also planned
+developed by Aravind cp
+ ## contribution
+create branch start with users/username/branch name and rise pr 
+contributions are welcomed
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
 
 ## Development server
