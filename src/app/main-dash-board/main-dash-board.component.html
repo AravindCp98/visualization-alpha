@@ -1,30 +1,22 @@
 <header class="flex header">
-   <div >
+   <div>
       <img class="orgLog" src="assets/mycompanyLogo.png" />
    </div>
    <h1>Visualization Alpha</h1>
-<router-outlet></router-outlet>
-   
-
+   <router-outlet></router-outlet>
 </header>
 
 <div class="flex">
-<div class="chartParenrt">
-  <canvas id="myChart"></canvas>
+   <div class="chartParenrt">
+      <canvas id="myChart"></canvas>
+   </div>
+   <div class="chartParenrt">
+      <canvas id="secondChart"></canvas>
+   </div>
 </div>
-<div class="chartParenrt">
-  <canvas id="secondChart"></canvas>
-</div>
-</div>
-
-<!-- <h2>Child component</h2> -->
-<!-- <h1>{{ valuefromPparent }} </h1> -->
 
 <button (click)="closeLiveData()">close message </button>
 <button (click)="connectToSocket()">Open subscription</button>
 <div>
    <b>{{connectionMessage}} </b>
 </div>
-<!-- <div *ngFor="let data of liveMessage ">
-   {{ data }}
-</div> -->
