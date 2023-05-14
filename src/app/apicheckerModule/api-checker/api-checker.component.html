@@ -63,9 +63,9 @@
         </div>
         <div class="tablecontent">
             <span class="loader" *ngIf="!fectedData"></span>
-            <div *ngFor="let data of fectedData | json">
+            <div >
                 <pre>
-                     {{data }}
+                     {{fectedData | json }}
                     </pre>
             </div>
         </div>

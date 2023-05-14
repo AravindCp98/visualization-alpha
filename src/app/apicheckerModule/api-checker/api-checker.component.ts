@@ -20,7 +20,7 @@ export class ApiCheckerComponent implements OnInit {
   ngOnInit(): void {
     this.apiLsit = [];
     const parsedData = JSON.parse(localStorage.getItem("apilist")!);
-    parsedData.forEach((element: string) => {
+    parsedData.length && parsedData.forEach((element: string) => {
       return this.apiLsit.push(element);
     });
 
@@ -36,12 +36,22 @@ export class ApiCheckerComponent implements OnInit {
 
     }
   }
-  initializeHttpMethod(getApi?: string) {
+  async initializeHttpMethod(getApi?: string) {
     if (getApi?.length) {
-      this.fectedData = this.GetService.fetchApi(getApi)
+      // this.fectedData = this.GetService.fetchApi(getApi)
+      (await this.GetService.fetchApi(getApi)).subscribe((e:any)=>{ 
+        console.log(e)
+        this.fectedData = e;
+        console.log(this.fectedData)
+      })
     }
     else {
-      this.fectedData = this.GetService.fetchApi(this.getApi)
+      // this.fectedData = this.GetService.fetchApi(this.getApi)
+      (await this.GetService.fetchApi(this.getApi)).subscribe((e:any)=>{
+        console.log(e)
+        this.fectedData = e;
+        console.log(this.fectedData)
+      })
     }
   }
 
